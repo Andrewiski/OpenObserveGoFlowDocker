@@ -1,0 +1,54 @@
+services:
+  openobserve:
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    container_name: openobserve
+    restart: always
+    ports:
+      - "5080:5080"
+    volumes:
+      - ./openobserve_data:/data
+    environment:
+      # Set your desired credentials for the root user
+      ZO_ROOT_USER_EMAIL: "${USEREMAIL:-replaceme@example.com}"
+      ZO_ROOT_USER_PASSWORD: "${USERPASSWORD:-Complexpass#123456}"
+      ZO_DATA_DIR: "/data"
+    networks:
+      - openobserve-net
+
+  goflow2:
+    # We use a specific image that includes the http transport option
+    image: openobserve/goflow2:latest
+    container_name: goflow2
+    restart: always
+    ports:
+      # Expose UDP ports for NetFlow/IPFIX/sFlow collection
+      - "2055:2055/udp"
+      - "6343:6343/udp"
+    environment:
+      # The destination URL for OpenObserve's JSON ingestion endpoint
+      HTTP_DESTINATION: "http://openobserve:5080/api/default/gflow2/_json"
+      # The Authorization header for basic auth
+      HTTP_HEADER: "Authorization"
+      # Base64 encoded credentials (echo -n "replaceme@example.com:Complexpass#123456" | base64)
+      HTTP_CREDENTIALS: "Basic ${USERPASSBASE64:-cmVwbGFjZW1lQGV4YW1wbGUuY29tOkNvbXBsZXhwYXNzIzEyMzQ1Ng==}"
+      # Batch size for sending flows
+      HTTP_BATCHSIZE: "1000"
+    command: [
+        "/goflow2",
+        "-transport=http",
+        "-transport.http.destination=$(HTTP_DESTINATION)",
+        "-transport.http.batchSize=$(HTTP_BATCHSIZE)",
+        "-transport.http.auth.header=$(HTTP_HEADER)",
+        "-transport.http.auth.credentials=$(HTTP_CREDENTIALS)",
+        "-sflow=true",
+        "-netflow=true",
+        "-ipfix=true"
+    ]
+    depends_on:
+      - openobserve
+    networks:
+      - openobserve-net
+
+networks:
+  openobserve-net:
+    driver: bridge
