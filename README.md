@@ -10,14 +10,15 @@ newgrp groupName
 
 '''
 
-### Step 3: Download the install.sh script from github 
+### Step 3: Download the install script from github Repo and mark it executable
 ```
-curl -H 'Cache-Control: no-cache, no-store' -sL https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocke/main/install.sh -o install.sh
+curl -H 'Cache-Control: no-cache, no-store' -sL "https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main/dockerCompose/installOpenObserveGoFlow.sh" -o installOpenObserveGoFlow.sh
+chmod +x installOpenObserveGoFlow.sh
 ```
 
 ### Step 4: Run the installUispToolsStandAlone.sh script
 ```
-  ./installUispToolsStandAlone.sh -alias uisptools -googleapikey "AIAASSSrB1Ek-000000-0000000" -installdir "/home/$USER/uisptools" -httpport 46080 -httpsport 46443 -nocreateuser 
+  ./installOpenObserveGoFlow.sh -useremail rootuser@example.com -userPassword ComplexPassword123421
 ```
 
 ## Disclaimer 
