@@ -9,10 +9,10 @@ sudo usermod -a -G docker $USER
 newgrp groupName
 ```
 
-### Step 3: Download the install script from github Repo and mark it executable
+### Step 3: Download the install script from github Repo and mark it executable 
 
 ```
-curl -H 'Cache-Control: no-cache, no-store' -sL "https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main/dockerCompose/installOpenObserveGoFlow.sh" -o installOpenObserveGoFlow.sh
+curl -H 'Cache-Control: no-cache, no-store' -sL "https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main/installOpenObserveGoFlow.sh" -o installOpenObserveGoFlow.sh
 chmod +x installOpenObserveGoFlow.sh
 ```
 
