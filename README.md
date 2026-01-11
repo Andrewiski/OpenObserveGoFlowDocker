@@ -18,7 +18,7 @@ chmod +x installOpenObserveGoFlow.sh
 
 ### Step 4: Run the installUispToolsStandAlone.sh script
 ```
-  ./installOpenObserveGoFlow.sh -useremail rootuser@example.com -userPassword ComplexPassword123421 -installdir ~/OpenObserve
+  ./installOpenObserveGoFlow.sh -useremail rootuser@example.com -userpassword ComplexPassword123421 -installdir ~/OpenObserve
 ```
 
 ## Disclaimer 
