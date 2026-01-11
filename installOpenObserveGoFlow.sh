@@ -1,12 +1,12 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.1.2026-01-11:0005
+VERSION=0.0.2.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
-# USEREMAIL=""
-# USERPASSWORD=""
-# APP_HOME_DIR=""
+USEREMAIL=""
+USERPASSWORD=""
+APP_DIR=""
 
 APP_REPO="https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main/"
 USERNAME="${$USER}"
@@ -38,7 +38,7 @@ while :; do
               USERPASSWORD=$2
             shift
           else
-            cliexit 'ERROR: "--installdir" requires a non-empty option argument.'
+            cliexit 'ERROR: "-userpassword" requires a non-empty option argument.'
           fi
           ;;
 
@@ -47,7 +47,7 @@ while :; do
               APP_DIR=$2
             shift
           else
-            cliexit 'ERROR: "--installdir" requires a non-empty option argument.'
+            cliexit 'ERROR: "-installdir" requires a non-empty option argument.'
           fi
           ;;
        
