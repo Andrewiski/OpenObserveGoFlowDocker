@@ -15,11 +15,11 @@ services:
     networks:
       - openobserve-net
 
-  goflow2:
+  openobserve_goflow2:
     # We use a specific image that includes the http transport option
     # image: ghcr.io/openobserve/goflow2:latest # openobserve/goflow2:latest
     image: docker pull ghcr.io/openobserve/goflow2:80c7e5d
-    container_name: goflow2
+    container_name: openobserve_goflow2
     restart: always
     ports:
       # Expose UDP ports for NetFlow/IPFIX/sFlow collection
