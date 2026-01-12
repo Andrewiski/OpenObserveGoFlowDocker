@@ -17,7 +17,8 @@ services:
 
   goflow2:
     # We use a specific image that includes the http transport option
-    image: openobserve/goflow2:latest
+    # image: ghcr.io/openobserve/goflow2:latest # openobserve/goflow2:latest
+    image: docker pull ghcr.io/openobserve/goflow2:80c7e5d
     container_name: goflow2
     restart: always
     ports:
