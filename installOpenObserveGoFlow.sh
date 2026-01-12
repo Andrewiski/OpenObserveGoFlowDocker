@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.10.2026-01-11:0005
+VERSION=0.0.11.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -12,6 +12,8 @@ APP_REPO="https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/r
 USERNAME="${USER}"
 COMPOSE_PROJECT_NAME_1="public.ecr.aws/zinclabs/openobserve:latest"
 COMPOSE_PROJECT_NAME_2="ghcr.io/openobserve/goflow2:80c7e5d"
+COMPOSE_CONTAINER_NAME_1="openobserve"
+COMPOSE_CONTAINER_NAME_2="goflow2"
 
 cliexit() {
     printf '%s\n' "$1" >&2
