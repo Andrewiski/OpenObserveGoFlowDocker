@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.12.2026-01-11:0005
+VERSION=0.0.13.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -12,7 +12,7 @@ APP_REPO="https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/r
 USERNAME="${USER}"
 COMPOSE_PROJECT_NAME_1="public.ecr.aws/zinclabs/openobserve:latest"
 COMPOSE_PROJECT_NAME_2="ghcr.io/openobserve/goflow2:80c7e5d"
-COMPOSE_CONTAINER_NAME_1="openobserve"
+COMPOSE_CONTAINER_NAME_1="openobserve_server"
 COMPOSE_CONTAINER_NAME_2="openobserve_goflow2"
 
 cliexit() {
@@ -196,7 +196,7 @@ remove_old_images() {
 
 start_docker_containers() {
   echo "Starting docker containers."
-  docker compose -p openobservegoflow --env-file "${APP_DIR}/app.env" -f "${APP_DIR}/docker-compose.yml" up -d openobserve || fail "Failed to start docker containers"
+  docker compose -p openobservegoflow --env-file "${APP_DIR}/app.env" -f "${APP_DIR}/docker-compose.yml" up -d openobserve_goflow2 || fail "Failed to start docker containers"
 }
 
 
