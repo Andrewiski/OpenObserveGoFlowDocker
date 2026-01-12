@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.9.2026-01-11:0005
+VERSION=0.0.10.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -194,7 +194,7 @@ remove_old_images() {
 
 start_docker_containers() {
   echo "Starting docker containers."
-  docker compose -p OpenObserveGoFlow --env-file "${APP_DIR}/app.env" -f "${APP_DIR}/docker-compose.yml" up -d openobserve || fail "Failed to start docker containers"
+  docker compose -p openobservegoflow --env-file "${APP_DIR}/app.env" -f "${APP_DIR}/docker-compose.yml" up -d openobserve || fail "Failed to start docker containers"
 }
 
 
