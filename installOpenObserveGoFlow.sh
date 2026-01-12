@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.11.2026-01-11:0005
+VERSION=0.0.12.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -13,7 +13,7 @@ USERNAME="${USER}"
 COMPOSE_PROJECT_NAME_1="public.ecr.aws/zinclabs/openobserve:latest"
 COMPOSE_PROJECT_NAME_2="ghcr.io/openobserve/goflow2:80c7e5d"
 COMPOSE_CONTAINER_NAME_1="openobserve"
-COMPOSE_CONTAINER_NAME_2="goflow2"
+COMPOSE_CONTAINER_NAME_2="openobserve_goflow2"
 
 cliexit() {
     printf '%s\n' "$1" >&2
@@ -88,7 +88,7 @@ PREREQUISITES=(
 echo "UserEmail is $USEREMAIL"
 echo "App Directory is $APP_DIR"
 # Base64 encoded credentials $(echo -n "root@example.com:Complexpass#123" | base64)
-USERPASSBASE64=$(echo -n "$USEREMAIL:$USERPASSWORD" | base64)
+USERPASSBASE64="$(echo -n "${USEREMAIL}:${USERPASSWORD}" | base64)"
 echo "Base64 is $HTTP_CREDENTIALS"
 
 if [ "${SCRIPT_DIR}" = "${APP_DIR}" ]; then
