@@ -1,7 +1,7 @@
 services:
-  openobserve:
+  openobserve_server:
     image: public.ecr.aws/zinclabs/openobserve:latest
-    container_name: openobserve
+    container_name: openobserve_server
     restart: always
     ports:
       - "5080:5080"
@@ -44,7 +44,7 @@ services:
         "-ipfix=true"
     ]
     depends_on:
-      - openobserve
+      - openobserve_server
     networks:
       - openobserve-net
 
