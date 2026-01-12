@@ -27,7 +27,7 @@ services:
       - "6343:6343/udp"
     environment:
       # The destination URL for OpenObserve's JSON ingestion endpoint
-      HTTP_DESTINATION: "http://openobserve:5080/api/default/gflow2/_json"
+      HTTP_DESTINATION: "http://openobserve_server:5080/api/default/gflow2/_json"
       # The Authorization header for basic auth
       HTTP_HEADER: "Authorization"
       # Base64 encoded credentials (echo -n "replaceme@example.com:Complexpass#123456" | base64)
