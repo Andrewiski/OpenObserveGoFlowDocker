@@ -31,7 +31,7 @@ services:
       # The Authorization header for basic auth
       HTTP_HEADER: "Authorization"
       # Base64 encoded credentials (echo -n "replaceme@example.com:Complexpass#123456" | base64)
-      HTTP_CREDENTIALS: "Basic ${USERPASSBASE64:-cmVwbGFjZW1lQGV4YW1wbGUuY29tOkNvbXBsZXhwYXNzIzEyMzQ1Ng==}"
+      HTTP_CREDENTIALS: "\"Basic ${USERPASSBASE64:-cmVwbGFjZW1lQGV4YW1wbGUuY29tOkNvbXBsZXhwYXNzIzEyMzQ1Ng==}\""
       # Batch size for sending flows
       HTTP_BATCHSIZE: "1000"
     command: [
