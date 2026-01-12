@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.8.2026-01-11:0005
+VERSION=0.0.9.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -109,9 +109,9 @@ fail() {
 }
 
 pull_install_files(){
-  echo "downloading ${}/docker-compose.yml"
-  echo "curl -H 'Cache-Control: no-cache, no-store' -LS \"${}/docker-compose.yml\" -o \"${APP_DIR}/docker-compose.yml\""
-	curl -H 'Cache-Control: no-cache, no-store' -LS "${}/docker-compose.yml" -o "${APP_DIR}/docker-compose.yml"
+  echo "downloading ${APP_REPO}/docker-compose.yml"
+  echo "curl -H 'Cache-Control: no-cache, no-store' -LS \"${APP_REPO}/docker-compose.yml\" -o \"${APP_DIR}/docker-compose.yml\""
+	curl -H 'Cache-Control: no-cache, no-store' -LS "${APP_REPO}/docker-compose.yml" -o "${APP_DIR}/docker-compose.yml"
 }
 
 create_app_folder() {
