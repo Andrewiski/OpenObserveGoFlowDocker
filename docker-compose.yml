@@ -6,7 +6,7 @@ services:
     ports:
       - "5080:5080"
     volumes:
-      - ./openobserve_data:/data
+      - ./data:/data
     environment:
       # Set your desired credentials for the root user
       ZO_ROOT_USER_EMAIL: "${USEREMAIL:-replaceme@example.com}"
@@ -14,10 +14,8 @@ services:
       ZO_DATA_DIR: "/data"
     networks:
       - openobserve-net
-
   openobserve_goflow2:
     # We use a specific image that includes the http transport option
-    # image: ghcr.io/openobserve/goflow2:latest # openobserve/goflow2:latest
     image: docker pull ghcr.io/openobserve/goflow2:80c7e5d
     container_name: openobserve_goflow2
     restart: always
