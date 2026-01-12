@@ -17,6 +17,8 @@ services:
   openobserve_goflow2:
     # We use a specific image that includes the http transport option
     image: ghcr.io/openobserve/goflow2:80c7e5d
+    logging:
+      driver: "none"
     container_name: openobserve_goflow2
     restart: always
     ports:
