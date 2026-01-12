@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.14.2026-01-11:0005
+VERSION=0.0.15.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -131,7 +131,7 @@ write_env_file() {
 # The path to the Config Folder where config.json is located
 DATADIRECTORY=${APP_DIR}/data
 USEREMAIL=${USEREMAIL}
-USERPASSWORD=${USEREMAIL}
+USERPASSWORD=${USERPASSWORD}
 USERPASSBASE64=${USERPASSBASE64}
 EOF
 }
