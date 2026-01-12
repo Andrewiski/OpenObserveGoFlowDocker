@@ -1,7 +1,7 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.13.2026-01-11:0005
+VERSION=0.0.14.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
@@ -89,7 +89,7 @@ echo "UserEmail is $USEREMAIL"
 echo "App Directory is $APP_DIR"
 # Base64 encoded credentials $(echo -n "root@example.com:Complexpass#123" | base64)
 USERPASSBASE64="$(echo -n "${USEREMAIL}:${USERPASSWORD}" | base64)"
-echo "Base64 is $HTTP_CREDENTIALS"
+echo "Base64 is $USERPASSBASE64"
 
 if [ "${SCRIPT_DIR}" = "${APP_DIR}" ]; then
   echo >&2 "Please don't run the installation script in the application directory ${APP_DIR}"
