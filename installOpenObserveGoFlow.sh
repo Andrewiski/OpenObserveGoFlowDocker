@@ -6,6 +6,7 @@ echo installOpenObserveGoFlow version $VERSION
 
 USEREMAIL=""
 USERPASSWORD=""
+
 APP_DIR=""
 HTTP_CREDENTIALS=""
 APP_REPO="https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main"  # No Trailing slash
@@ -43,7 +44,15 @@ while :; do
             cliexit 'ERROR: "-userpassword" requires a non-empty option argument.'
           fi
           ;;
-
+        
+        -goflowhttpauth) # user password. 
+          if [ "$2" ]; then
+              USERPASSBASE64=$2
+            shift
+          else
+            cliexit 'ERROR: "-goflowhttpauth" requires a non-empty option argument.'
+          fi
+          ;;
 		 -installdir) # Install Directory. 
           if [ "$2" ]; then
               APP_DIR=$2
@@ -88,7 +97,7 @@ PREREQUISITES=(
 echo "UserEmail is $USEREMAIL"
 echo "App Directory is $APP_DIR"
 # Base64 encoded credentials $(echo -n "root@example.com:Complexpass#123" | base64)
-USERPASSBASE64="$(echo -n "${USEREMAIL}:${USERPASSWORD}" | base64)"
+# USERPASSBASE64="$(echo -n "${USEREMAIL}:${USERPASSWORD}" | base64)"
 echo "Base64 is $USERPASSBASE64"
 
 if [ "${SCRIPT_DIR}" = "${APP_DIR}" ]; then
