@@ -1,13 +1,13 @@
 #!/bin/bash
 # installOpenObserveGoFlow.sh
 
-VERSION=0.0.4.2026-01-11:0005
+VERSION=0.0.5.2026-01-11:0005
 echo installOpenObserveGoFlow version $VERSION
 
-USEREMAIL="NOTSET"
-USERPASSWORD="NOTSET"
-APP_DIR="NOTSET"
-
+USEREMAIL=""
+USERPASSWORD=""
+APP_DIR=""
+HTTP_CREDENTIALS=""
 APP_REPO="https://raw.githubusercontent.com/Andrewiski/OpenObserveGoFlowDocker/refs/heads/main/"
 USERNAME="${USER}"
 COMPOSE_PROJECT_NAME_1="public.ecr.aws/zinclabs/openobserve:latest"
@@ -85,6 +85,9 @@ PREREQUISITES=(
 
 echo "UserEmail is $USEREMAIL"
 echo "App Directory is $APP_DIR"
+# Base64 encoded credentials $(echo -n "root@example.com:Complexpass#123" | base64)
+USERPASSBASE64=$(echo -n "$USEREMAIL:$USERPASSWORD" | base64)
+echo "Base64 is $HTTP_CREDENTIALS"
 
 if [ "${SCRIPT_DIR}" = "${APP_DIR}" ]; then
   echo >&2 "Please don't run the installation script in the application directory ${APP_DIR}"
@@ -125,6 +128,9 @@ write_env_file() {
 # APP
 # The path to the Config Folder where config.json is located
 DATADIRECTORY=${APP_DIR}/data
+USEREMAIL=${USEREMAIL}
+USERPASSWORD=${USEREMAIL}
+USERPASSBASE64=${USERPASSBASE64}
 EOF
 }
 
